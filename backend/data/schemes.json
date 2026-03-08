@@ -1,0 +1,200 @@
+[
+    {
+        "id": "pm-kisan",
+        "name": {
+            "en": "PM Kisan Samman Nidhi",
+            "hi": "पीएम किसान सम्मान निधि"
+        },
+        "description": {
+            "en": "Financial assistance of ₹6,000 per year to small and marginal farmers, paid in three equal installments of ₹2,000 each.",
+            "hi": "छोटे और सीमांत किसानों को ₹6,000 प्रति वर्ष की आर्थिक सहायता, ₹2,000 की तीन समान किस्तों में दी जाती है।"
+        },
+        "benefits": {
+            "en": "₹6,000 per year in 3 installments of ₹2,000 each, directly transferred to bank account",
+            "hi": "₹6,000 प्रति वर्ष, ₹2,000 की 3 किस्तों में, सीधे बैंक खाते में"
+        },
+        "eligibility": {
+            "en": [
+                "Small and marginal farmers",
+                "Must have cultivable land",
+                "Valid Aadhaar card",
+                "Bank account linked with Aadhaar"
+            ],
+            "hi": [
+                "छोटे और सीमांत किसान",
+                "खेती योग्य भूमि होनी चाहिए",
+                "वैध आधार कार्ड",
+                "आधार से जुड़ा बैंक खाता"
+            ]
+        },
+        "category": "agriculture",
+        "portalUrl": "https://pmkisan.gov.in",
+        "ministry": "Ministry of Agriculture & Farmers Welfare",
+        "amount": "₹6,000/year"
+    },
+    {
+        "id": "ayushman-bharat",
+        "name": {
+            "en": "Ayushman Bharat - PMJAY",
+            "hi": "आयुष्मान भारत - पीएमजेएवाई"
+        },
+        "description": {
+            "en": "Health insurance coverage of ₹5 lakh per family per year for secondary and tertiary hospitalization.",
+            "hi": "माध्यमिक और तृतीयक अस्पताल में भर्ती के लिए प्रति परिवार प्रति वर्ष ₹5 लाख का स्वास्थ्य बीमा।"
+        },
+        "benefits": {
+            "en": "₹5 lakh health insurance per family per year, cashless treatment at empanelled hospitals",
+            "hi": "प्रति परिवार प्रति वर्ष ₹5 लाख स्वास्थ्य बीमा, पैनल अस्पतालों में कैशलेस इलाज"
+        },
+        "eligibility": {
+            "en": [
+                "Families identified by SECC 2011 data",
+                "No existing health insurance",
+                "Below poverty line families",
+                "Workers in unorganized sector"
+            ],
+            "hi": [
+                "SECC 2011 डेटा द्वारा पहचाने गए परिवार",
+                "कोई मौजूदा स्वास्थ्य बीमा नहीं",
+                "गरीबी रेखा से नीचे के परिवार",
+                "असंगठित क्षेत्र के कामगार"
+            ]
+        },
+        "category": "health",
+        "portalUrl": "https://pmjay.gov.in",
+        "ministry": "Ministry of Health & Family Welfare",
+        "amount": "₹5,00,000/year"
+    },
+    {
+        "id": "pm-awas-yojana",
+        "name": {
+            "en": "PM Awas Yojana (Gramin)",
+            "hi": "पीएम आवास योजना (ग्रामीण)"
+        },
+        "description": {
+            "en": "Financial assistance for construction of pucca houses for rural families who are homeless or living in kutcha/dilapidated houses.",
+            "hi": "बेघर या कच्चे/जीर्ण-शीर्ण घरों में रहने वाले ग्रामीण परिवारों को पक्के घर बनाने के लिए आर्थिक सहायता।"
+        },
+        "benefits": {
+            "en": "₹1.20 lakh in plains and ₹1.30 lakh in hilly areas for house construction",
+            "hi": "मैदानी क्षेत्रों में ₹1.20 लाख और पहाड़ी क्षेत्रों में ₹1.30 लाख घर निर्माण के लिए"
+        },
+        "eligibility": {
+            "en": [
+                "Homeless families",
+                "Families living in kutcha houses",
+                "Rural area residents",
+                "Not received housing benefit from any government scheme"
+            ],
+            "hi": [
+                "बेघर परिवार",
+                "कच्चे घरों में रहने वाले परिवार",
+                "ग्रामीण क्षेत्र के निवासी",
+                "किसी सरकारी योजना से आवास लाभ नहीं मिला"
+            ]
+        },
+        "category": "housing",
+        "portalUrl": "https://pmayg.nic.in",
+        "ministry": "Ministry of Rural Development",
+        "amount": "₹1,20,000 - ₹1,30,000"
+    },
+    {
+        "id": "ujjwala-yojana",
+        "name": {
+            "en": "PM Ujjwala Yojana",
+            "hi": "पीएम उज्ज्वला योजना"
+        },
+        "description": {
+            "en": "Free LPG gas connections to women from below poverty line families to ensure clean cooking fuel access.",
+            "hi": "गरीबी रेखा से नीचे के परिवारों की महिलाओं को स्वच्छ रसोई ईंधन सुनिश्चित करने के लिए मुफ्त एलपीजी गैस कनेक्शन।"
+        },
+        "benefits": {
+            "en": "Free LPG connection, ₹1,600 subsidy for first refill and stove",
+            "hi": "मुफ्त एलपीजी कनेक्शन, पहली रिफिल और चूल्हे के लिए ₹1,600 सब्सिडी"
+        },
+        "eligibility": {
+            "en": [
+                "Women from BPL families",
+                "No existing LPG connection in household",
+                "Age above 18 years",
+                "Valid Aadhaar and BPL ration card"
+            ],
+            "hi": [
+                "बीपीएल परिवारों की महिलाएं",
+                "घर में कोई एलपीजी कनेक्शन नहीं",
+                "18 वर्ष से अधिक आयु",
+                "वैध आधार और बीपीएल राशन कार्ड"
+            ]
+        },
+        "category": "welfare",
+        "portalUrl": "https://www.pmuy.gov.in",
+        "ministry": "Ministry of Petroleum & Natural Gas",
+        "amount": "Free connection + ₹1,600 subsidy"
+    },
+    {
+        "id": "sukanya-samriddhi",
+        "name": {
+            "en": "Sukanya Samriddhi Yojana",
+            "hi": "सुकन्या समृद्धि योजना"
+        },
+        "description": {
+            "en": "Small savings scheme for the girl child with attractive interest rate and tax benefits under Section 80C.",
+            "hi": "बालिकाओं के लिए आकर्षक ब्याज दर और धारा 80C के तहत कर लाभ के साथ छोटी बचत योजना।"
+        },
+        "benefits": {
+            "en": "8.2% interest rate, tax-free returns, minimum ₹250 deposit, maturity at age 21",
+            "hi": "8.2% ब्याज दर, कर-मुक्त रिटर्न, न्यूनतम ₹250 जमा, 21 वर्ष की आयु पर परिपक्वता"
+        },
+        "eligibility": {
+            "en": [
+                "Girl child below 10 years of age",
+                "Only 2 accounts per family",
+                "Parent or legal guardian to open account",
+                "Indian citizen"
+            ],
+            "hi": [
+                "10 वर्ष से कम आयु की बालिका",
+                "प्रति परिवार केवल 2 खाते",
+                "माता-पिता या कानूनी अभिभावक खाता खोलें",
+                "भारतीय नागरिक"
+            ]
+        },
+        "category": "finance",
+        "portalUrl": "https://www.india.gov.in/sukanya-samriddhi-yojna",
+        "ministry": "Ministry of Finance",
+        "amount": "8.2% interest rate"
+    },
+    {
+        "id": "mudra-yojana",
+        "name": {
+            "en": "PM MUDRA Yojana",
+            "hi": "पीएम मुद्रा योजना"
+        },
+        "description": {
+            "en": "Loans up to ₹10 lakh for small businesses and entrepreneurs without collateral requirements.",
+            "hi": "बिना जमानत के छोटे व्यवसायों और उद्यमियों को ₹10 लाख तक का ऋण।"
+        },
+        "benefits": {
+            "en": "Loans from ₹50,000 (Shishu) to ₹10 lakh (Tarun), no collateral needed, low interest rates",
+            "hi": "₹50,000 (शिशु) से ₹10 लाख (तरुण) तक ऋण, कोई जमानत नहीं, कम ब्याज दरें"
+        },
+        "eligibility": {
+            "en": [
+                "Small business owners",
+                "Micro-entrepreneurs",
+                "Self-employed individuals",
+                "Business plan required for higher amounts"
+            ],
+            "hi": [
+                "छोटे व्यापार मालिक",
+                "सूक्ष्म उद्यमी",
+                "स्व-रोज़गार व्यक्ति",
+                "अधिक राशि के लिए व्यापार योजना आवश्यक"
+            ]
+        },
+        "category": "business",
+        "portalUrl": "https://www.mudra.org.in",
+        "ministry": "Ministry of Finance",
+        "amount": "Up to ₹10,00,000"
+    }
+]

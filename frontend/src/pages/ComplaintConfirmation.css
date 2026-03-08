@@ -1,0 +1,194 @@
+.complaint-confirmation {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--space-4);
+    gap: var(--space-6);
+    overflow-y: auto;
+    padding-bottom: var(--space-16);
+}
+
+/* ===== Success Animation ===== */
+.success-container {
+    margin-top: var(--space-4);
+}
+
+.success-circle {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-success);
+}
+
+.success-circle-bg {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    animation: successCircleDraw 0.8s ease forwards;
+}
+
+@keyframes successCircleDraw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.success-check {
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: checkmarkDraw 0.5s ease forwards 0.5s;
+}
+
+/* ===== Confirmation Text ===== */
+.confirmation-content {
+    text-align: center;
+    opacity: 0;
+}
+
+.confirmation-title {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--color-success);
+}
+
+.confirmation-subtitle {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin-top: var(--space-1);
+}
+
+/* ===== Tracking Card ===== */
+.tracking-card {
+    text-align: center;
+    padding: var(--space-6) var(--space-8);
+    max-width: 360px;
+    width: 100%;
+    background: var(--color-success-bg) !important;
+    border-color: rgba(34, 197, 94, 0.15) !important;
+    opacity: 0;
+}
+
+.tracking-label {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-2);
+}
+
+.tracking-id {
+    font-size: var(--text-2xl);
+    font-weight: 800;
+    color: var(--color-success);
+    font-family: 'Inter', monospace;
+    letter-spacing: 0.04em;
+}
+
+.tracking-hint {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    margin-top: var(--space-2);
+}
+
+/* ===== Complaint Details ===== */
+.complaint-details {
+    max-width: 420px;
+    width: 100%;
+    padding: var(--space-5);
+    opacity: 0;
+}
+
+.detail-row {
+    display: flex;
+    gap: var(--space-3);
+    padding: var(--space-3) 0;
+}
+
+.detail-icon {
+    font-size: var(--text-lg);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.detail-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    flex: 1;
+}
+
+.detail-label {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.detail-value {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
+
+.detail-divider {
+    height: 1px;
+    background: var(--color-border);
+    margin: 0 var(--space-2);
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--color-success);
+    font-weight: 500;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-success);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* ===== Reuse voice-playing and new-query-btn from SchemeResult ===== */
+.complaint-confirmation .voice-playing {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-5);
+    background: rgba(34, 197, 94, 0.06);
+    border: 1px solid rgba(34, 197, 94, 0.15);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    color: var(--color-success);
+}
+
+.complaint-confirmation .voice-bars span {
+    background: var(--color-success);
+}
+
+.complaint-confirmation .new-query-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-8);
+    background: var(--color-bg-glass);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    font-size: var(--text-base);
+    font-weight: 500;
+    border-radius: var(--radius-full);
+    transition: all var(--transition-base);
+    min-height: 56px;
+}
+
+.complaint-confirmation .new-query-btn:hover {
+    background: rgba(34, 197, 94, 0.08);
+    border-color: rgba(34, 197, 94, 0.25);
+    transform: translateY(-2px);
+}
