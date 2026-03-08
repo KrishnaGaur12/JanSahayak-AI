@@ -1,0 +1,168 @@
+/* ===== AI Orb Component — Light Theme ===== */
+
+.orb-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 260px;
+    height: 260px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+
+/* ===== Ambient Glow ===== */
+.orb-ambient {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 107, 43, 0.15) 0%, rgba(255, 179, 71, 0.08) 40%, rgba(255, 107, 43, 0.03) 70%, transparent 100%);
+    filter: blur(40px);
+    pointer-events: none;
+}
+
+/* ===== Outer Ring ===== */
+.orb-ring {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 1.5px solid transparent;
+    background: conic-gradient(from 0deg, rgba(255, 107, 43, 0.5), rgba(255, 179, 71, 0.3), rgba(255, 107, 43, 0.4), rgba(255, 179, 71, 0.1), rgba(255, 107, 43, 0.5)) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+/* ===== Pulse Waves (Speaking) ===== */
+.orb-wave {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 107, 43, 0.25);
+    pointer-events: none;
+}
+
+/* ===== Ripples (Listening) ===== */
+.orb-ripple {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 107, 43, 0.25);
+    pointer-events: none;
+}
+
+/* ===== Main Sphere ===== */
+.orb-sphere {
+    position: relative;
+    z-index: 2;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow:
+        0 0 60px rgba(255, 107, 43, 0.2),
+        0 0 120px rgba(255, 107, 43, 0.06),
+        inset 0 -4px 12px rgba(0, 0, 0, 0.1),
+        inset 0 4px 12px rgba(255, 255, 255, 0.3);
+}
+
+/* State gradients — warm orange tones for light theme */
+.orb-sphere-idle {
+    background: linear-gradient(135deg, #ff6b2b 0%, #ff8f5e 40%, #ffb347 60%, #ff6b2b 100%);
+}
+
+.orb-sphere-listening {
+    background: linear-gradient(135deg, #ff4500 0%, #ff6b2b 30%, #ff8f5e 60%, #ffb347 100%);
+}
+
+.orb-sphere-thinking {
+    background: linear-gradient(135deg, #ff8f5e 0%, #ffb347 40%, #ffd4a0 70%, #ff8f5e 100%);
+}
+
+.orb-sphere-speaking {
+    background: linear-gradient(135deg, #ff6b2b 0%, #ff8f5e 30%, #ffb347 60%, #ff6b2b 100%);
+}
+
+/* Inner shine overlay */
+.orb-inner {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at 35% 25%, rgba(255, 255, 255, 0.35) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+/* ===== State Icons ===== */
+.orb-icon {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.orb-bars {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    height: 32px;
+}
+
+.orb-bar {
+    width: 4px;
+    border-radius: 4px;
+    background: white;
+    opacity: 0.9;
+}
+
+/* ===== State Label ===== */
+.orb-label {
+    position: absolute;
+    bottom: -8px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: #8888a0;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    font-family: 'Plus Jakarta Sans', 'Noto Sans Devanagari', sans-serif;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+    .orb-container {
+        width: 220px;
+        height: 220px;
+    }
+
+    .orb-sphere {
+        width: 120px;
+        height: 120px;
+    }
+
+    .orb-ambient {
+        width: 180px;
+        height: 180px;
+    }
+
+    .orb-ring {
+        width: 150px;
+        height: 150px;
+    }
+
+    .orb-wave,
+    .orb-ripple {
+        width: 120px;
+        height: 120px;
+    }
+}

@@ -14,15 +14,39 @@ export function useVoiceRecorder() {
     const chunksRef = useRef([]);
     const streamRef = useRef(null);
     const recognitionRef = useRef(null);
+    const silenceTimeoutRef = useRef(null);
+    const onSilenceRef = useRef(null);
+    const silenceMsRef = useRef(2500);
+
+    const clearSilenceTimeout = useCallback(() => {
+        if (silenceTimeoutRef.current) {
+            clearTimeout(silenceTimeoutRef.current);
+            silenceTimeoutRef.current = null;
+        }
+    }, []);
+
+    const restartSilenceTimeout = useCallback(() => {
+        clearSilenceTimeout();
+        if (!onSilenceRef.current) return;
+
+        silenceTimeoutRef.current = setTimeout(() => {
+            if (typeof onSilenceRef.current === 'function') {
+                onSilenceRef.current();
+            }
+        }, silenceMsRef.current);
+    }, [clearSilenceTimeout]);
 
     /**
      * Start recording audio and optionally browser STT
      */
-    const startRecording = useCallback(async () => {
+    const startRecording = useCallback(async (options = {}) => {
         try {
             setError(null);
             setBrowserTranscript('');
             chunksRef.current = [];
+            onSilenceRef.current = options.onSilence || null;
+            silenceMsRef.current = options.silenceMs || 2500;
+            clearSilenceTimeout();
 
             // Request microphone access
             const stream = await navigator.mediaDevices.getUserMedia({
@@ -54,6 +78,7 @@ export function useVoiceRecorder() {
             startBrowserSTT();
 
             setIsRecording(true);
+            restartSilenceTimeout();
         } catch (err) {
             const message = err.name === 'NotAllowedError'
                 ? 'Microphone access denied. Please allow microphone access.'
@@ -61,13 +86,16 @@ export function useVoiceRecorder() {
             setError(message);
             console.error('Voice recorder error:', err);
         }
-    }, []);
+    }, [clearSilenceTimeout, restartSilenceTimeout]);
 
     /**
      * Stop recording and return audio blob + browser transcript
      */
     const stopRecording = useCallback(() => {
         return new Promise((resolve) => {
+            clearSilenceTimeout();
+            onSilenceRef.current = null;
+
             if (!mediaRecorderRef.current || mediaRecorderRef.current.state === 'inactive') {
                 resolve({ audioBlob: null, transcript: browserTranscript });
                 return;
@@ -90,7 +118,7 @@ export function useVoiceRecorder() {
             stopBrowserSTT();
             setIsRecording(false);
         });
-    }, [browserTranscript]);
+    }, [browserTranscript, clearSilenceTimeout]);
 
     /**
      * Start browser-native speech recognition
@@ -122,6 +150,7 @@ export function useVoiceRecorder() {
                 recognition._finalTranscript += final;
             }
             setBrowserTranscript(recognition._finalTranscript + interim);
+            restartSilenceTimeout();
         };
 
         recognition.onerror = (event) => {
@@ -132,7 +161,7 @@ export function useVoiceRecorder() {
 
         recognition.start();
         recognitionRef.current = recognition;
-    }, []);
+    }, [restartSilenceTimeout]);
 
     /**
      * Stop browser speech recognition
@@ -143,6 +172,7 @@ export function useVoiceRecorder() {
                 recognitionRef.current.stop();
             } catch (e) { /* ignore */ }
         }
+        clearSilenceTimeout();
     }, []);
 
     return {

@@ -3,35 +3,35 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 140px;
-    height: 140px;
+    width: 160px;
+    height: 160px;
 }
 
-/* ===== Ripple Rings ===== */
+/* Ripple rings */
 .mic-ripple {
     position: absolute;
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    border: 2px solid var(--color-mic-recording);
+    border: 1.5px solid var(--color-mic-recording);
     opacity: 0;
-    animation: ripple 2s ease-out infinite;
+    animation: ripple 2.2s ease-out infinite;
 }
 
 .mic-ripple-2 {
-    animation-delay: 0.5s;
+    animation-delay: 0.6s;
 }
 
 .mic-ripple-3 {
-    animation-delay: 1s;
+    animation-delay: 1.2s;
 }
 
-/* ===== Button ===== */
+/* Button */
 .mic-button {
     position: relative;
     z-index: 2;
-    width: 96px;
-    height: 96px;
+    width: 88px;
+    height: 88px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -43,43 +43,42 @@
     font-size: 0;
 }
 
-/* Idle State */
+/* Idle */
 .mic-button-idle {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-    box-shadow: 0 4px 24px var(--color-primary-glow),
-        0 0 0 0 var(--color-primary-glow);
-    animation: micPulse 3s ease-in-out infinite;
+    background: linear-gradient(145deg, var(--color-primary), var(--color-primary-dark));
+    box-shadow:
+        0 4px 20px var(--color-primary-glow),
+        0 0 0 0 rgba(255, 107, 43, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    animation: micPulse 3.5s ease-in-out infinite;
 }
 
 @keyframes micPulse {
 
     0%,
     100% {
-        box-shadow: 0 4px 24px var(--color-primary-glow),
-            0 0 0 0 rgba(255, 107, 43, 0.3);
+        box-shadow: 0 4px 20px var(--color-primary-glow), 0 0 0 0 rgba(255, 107, 43, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.12);
     }
 
     50% {
-        box-shadow: 0 4px 32px var(--color-primary-glow),
-            0 0 0 12px rgba(255, 107, 43, 0);
+        box-shadow: 0 6px 28px var(--color-primary-glow), 0 0 0 14px rgba(255, 107, 43, 0), inset 0 1px 0 rgba(255, 255, 255, 0.12);
     }
 }
 
 .mic-button-idle:hover {
     transform: scale(1.08);
-    box-shadow: 0 6px 32px var(--color-primary-glow),
-        0 0 0 8px rgba(255, 107, 43, 0.15);
+    box-shadow: 0 6px 28px var(--color-primary-glow), 0 0 0 8px rgba(255, 107, 43, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .mic-button-idle:active {
-    transform: scale(0.95);
+    transform: scale(0.96);
 }
 
-/* Recording State */
+/* Recording */
 .mic-button-recording {
-    background: linear-gradient(135deg, var(--color-mic-recording), #dc2626);
-    box-shadow: 0 4px 32px rgba(239, 68, 68, 0.4);
-    animation: micRecordPulse 1s ease-in-out infinite;
+    background: linear-gradient(145deg, var(--color-mic-recording), #dc2626);
+    box-shadow: 0 4px 24px rgba(239, 68, 68, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    animation: micRecordPulse 1.2s ease-in-out infinite;
 }
 
 @keyframes micRecordPulse {
@@ -90,12 +89,12 @@
     }
 
     50% {
-        transform: scale(1.06);
+        transform: scale(1.05);
     }
 }
 
 .mic-button-recording .mic-icon {
-    animation: micRecordBounce 0.8s ease-in-out infinite;
+    animation: micRecordBounce 0.9s ease-in-out infinite;
 }
 
 @keyframes micRecordBounce {
@@ -106,14 +105,14 @@
     }
 
     50% {
-        transform: scale(1.1);
+        transform: scale(1.08);
     }
 }
 
-/* Processing State */
+/* Processing */
 .mic-button-processing {
-    background: linear-gradient(135deg, var(--color-mic-processing), #f59e0b);
-    box-shadow: 0 4px 24px var(--color-accent-glow);
+    background: linear-gradient(145deg, var(--color-mic-processing), #f59e0b);
+    box-shadow: 0 4px 20px var(--color-accent-glow), inset 0 1px 0 rgba(255, 255, 255, 0.1);
     cursor: wait;
 }
 
@@ -121,27 +120,20 @@
     animation: spin 1s linear infinite;
 }
 
-/* Disabled */
 .mic-button:disabled {
-    opacity: 0.5;
+    opacity: 0.4;
     cursor: not-allowed;
     animation: none;
 }
 
-/* ===== Responsive ===== */
 @media (max-width: 380px) {
     .mic-button-container {
-        width: 120px;
-        height: 120px;
+        width: 140px;
+        height: 140px;
     }
 
     .mic-button {
-        width: 80px;
-        height: 80px;
-    }
-
-    .mic-button .mic-icon {
-        width: 28px;
-        height: 28px;
+        width: 76px;
+        height: 76px;
     }
 }

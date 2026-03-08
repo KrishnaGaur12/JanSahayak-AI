@@ -3,32 +3,29 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: var(--space-4);
-    gap: var(--space-6);
+    padding: var(--space-4) var(--space-4) var(--space-16);
+    gap: var(--space-8);
     overflow-y: auto;
-    padding-bottom: var(--space-16);
 }
 
-/* ===== Back Button ===== */
 .back-button {
     align-self: flex-start;
     display: flex;
     align-items: center;
     gap: var(--space-2);
-    padding: var(--space-2) var(--space-4);
-    color: var(--color-text-secondary);
+    padding: var(--space-2) var(--space-3);
+    color: var(--color-text-muted);
     font-size: var(--text-sm);
     border-radius: var(--radius-md);
     transition: all var(--transition-fast);
-    min-height: 44px;
+    min-height: 40px;
 }
 
 .back-button:hover {
-    color: var(--color-text);
+    color: var(--color-text-secondary);
     background: var(--color-bg-glass);
 }
 
-/* ===== Result Header ===== */
 .result-header {
     text-align: center;
     display: flex;
@@ -38,29 +35,26 @@
 }
 
 .result-icon {
-    font-size: 40px;
-    margin-bottom: var(--space-2);
+    font-size: 36px;
 }
 
 .result-title {
     font-size: var(--text-xl);
     font-weight: 700;
+    letter-spacing: var(--tracking-tight);
 }
 
 .result-subtitle {
     font-size: var(--text-sm);
-    color: var(--color-text-muted);
+    color: var(--color-text-faint);
+    letter-spacing: var(--tracking-wide);
 }
 
-/* ===== Original Query ===== */
 .original-query {
     display: flex;
     flex-direction: column;
     gap: var(--space-1);
-    padding: var(--space-3) var(--space-5);
-    background: var(--color-bg-glass);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--color-border);
+    padding: var(--space-4) var(--space-6);
     max-width: 400px;
     width: 100%;
     text-align: center;
@@ -68,7 +62,9 @@
 
 .query-label {
     font-size: var(--text-xs);
-    color: var(--color-text-muted);
+    color: var(--color-text-faint);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
 }
 
 .query-text {
@@ -77,62 +73,62 @@
     font-style: italic;
 }
 
-/* ===== Scheme Result Card ===== */
 .scheme-result-card {
     width: 100%;
-    animation: fadeInUp 0.6s ease forwards;
+    animation: fadeInUp 0.5s ease forwards;
 }
 
-/* ===== Voice Playing ===== */
+/* Voice Playing */
 .voice-playing {
     display: flex;
     align-items: center;
     gap: var(--space-3);
-    padding: var(--space-3) var(--space-5);
-    background: rgba(255, 107, 43, 0.06);
-    border: 1px solid rgba(255, 107, 43, 0.15);
+    padding: var(--space-2) var(--space-5);
+    background: var(--color-primary-subtle);
+    border: 1px solid rgba(255, 107, 43, 0.1);
     border-radius: var(--radius-full);
-    font-size: var(--text-sm);
+    font-size: var(--text-xs);
     color: var(--color-primary-light);
+    letter-spacing: var(--tracking-wide);
 }
 
 .voice-bars {
     display: flex;
-    gap: 3px;
+    gap: 2px;
     align-items: flex-end;
-    height: 16px;
+    height: 14px;
 }
 
 .voice-bars span {
     display: block;
-    width: 3px;
+    width: 2.5px;
     border-radius: 2px;
     background: var(--color-primary);
     animation: voiceBar 0.8s ease-in-out infinite;
 }
 
 .voice-bars span:nth-child(1) {
-    height: 6px;
+    height: 5px;
     animation-delay: 0s;
 }
 
 .voice-bars span:nth-child(2) {
-    height: 12px;
+    height: 10px;
     animation-delay: 0.1s;
 }
 
 .voice-bars span:nth-child(3) {
-    height: 16px;
+    height: 14px;
     animation-delay: 0.2s;
 }
 
 .voice-bars span:nth-child(4) {
-    height: 10px;
+    height: 8px;
     animation-delay: 0.3s;
 }
 
 .voice-bars span:nth-child(5) {
-    height: 8px;
+    height: 6px;
     animation-delay: 0.4s;
 }
 
@@ -140,7 +136,7 @@
 
     0%,
     100% {
-        transform: scaleY(0.5);
+        transform: scaleY(0.4);
     }
 
     50% {
@@ -148,25 +144,25 @@
     }
 }
 
-/* ===== New Query Button ===== */
 .new-query-btn {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: var(--space-3);
-    padding: var(--space-4) var(--space-8);
+    padding: var(--space-3) var(--space-8);
     background: var(--color-bg-glass);
     border: 1px solid var(--color-border);
-    color: var(--color-text);
-    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
     font-weight: 500;
     border-radius: var(--radius-full);
     transition: all var(--transition-base);
-    min-height: 56px;
+    min-height: 48px;
 }
 
 .new-query-btn:hover {
-    background: rgba(255, 107, 43, 0.08);
-    border-color: rgba(255, 107, 43, 0.25);
-    transform: translateY(-2px);
+    background: var(--color-primary-subtle);
+    border-color: rgba(255, 107, 43, 0.15);
+    color: var(--color-text);
+    transform: translateY(-1px);
 }

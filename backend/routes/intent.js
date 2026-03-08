@@ -124,12 +124,14 @@ router.post('/detect-intent', async (req, res) => {
             return res.status(400).json({ error: 'No text provided' });
         }
 
-        // Try AWS Bedrock first
+        // Try AWS Bedrock with retry + exponential backoff
         if (process.env.AWS_ACCESS_KEY_ID && process.env.AWS_SECRET_ACCESS_KEY && bedrockClient) {
-            try {
-                const modelId = process.env.BEDROCK_MODEL_ID || 'anthropic.claude-3-sonnet-20240229-v1:0';
+            const MAX_RETRIES = 3;
+            for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
+                try {
+                    const modelId = process.env.BEDROCK_MODEL_ID || 'anthropic.claude-3-sonnet-20240229-v1:0';
 
-                const prompt = `You are JanSahayak AI, a government services assistant for Indian citizens. Analyze the following user input and classify it.
+                    const prompt = `You are JanSahayak AI, a government services assistant for Indian citizens. Analyze the following user input and classify it.
 
 User Input: "${text}"
 
@@ -148,38 +150,45 @@ Respond ONLY with valid JSON:
   "response": "A helpful response in Hindi for the user (max 2 sentences)"
 }`;
 
-                const payload = {
-                    anthropic_version: "bedrock-2023-05-31",
-                    max_tokens: 300,
-                    messages: [{ role: "user", content: prompt }]
-                };
+                    const payload = {
+                        anthropic_version: "bedrock-2023-05-31",
+                        max_tokens: 300,
+                        messages: [{ role: "user", content: prompt }]
+                    };
 
-                const command = new InvokeModelCommand({
-                    modelId,
-                    contentType: 'application/json',
-                    accept: 'application/json',
-                    body: JSON.stringify(payload)
-                });
+                    const command = new InvokeModelCommand({
+                        modelId,
+                        contentType: 'application/json',
+                        accept: 'application/json',
+                        body: JSON.stringify(payload)
+                    });
 
-                const response = await bedrockClient.send(command);
-                const responseBody = JSON.parse(new TextDecoder().decode(response.body));
-                const content = responseBody.content[0].text;
+                    const response = await bedrockClient.send(command);
+                    const responseBody = JSON.parse(new TextDecoder().decode(response.body));
+                    const content = responseBody.content[0].text;
 
-                // Parse the JSON from Claude's response
-                const jsonMatch = content.match(/\{[\s\S]*\}/);
-                if (jsonMatch) {
-                    const result = JSON.parse(jsonMatch[0]);
+                    // Parse the JSON from Claude's response
+                    const jsonMatch = content.match(/\{[\s\S]*\}/);
+                    if (jsonMatch) {
+                        const result = JSON.parse(jsonMatch[0]);
 
-                    // Attach full scheme data if scheme intent
-                    if (result.intent === 'SCHEME_INTENT' && result.schemeId) {
-                        result.scheme = schemes.find(s => s.id === result.schemeId) || schemes[0];
+                        // Attach full scheme data if scheme intent
+                        if (result.intent === 'SCHEME_INTENT' && result.schemeId) {
+                            result.scheme = schemes.find(s => s.id === result.schemeId) || schemes[0];
+                        }
+
+                        return res.json({ ...result, source: 'aws-bedrock' });
                     }
-
-                    return res.json({ ...result, source: 'aws-bedrock' });
+                    break; // Valid response but no JSON — fall through to fallback
+                } catch (bedrockError) {
+                    console.error(`Bedrock attempt ${attempt}/${MAX_RETRIES} failed:`, bedrockError.message);
+                    if (attempt < MAX_RETRIES) {
+                        const delay = Math.pow(2, attempt - 1) * 1000; // 1s, 2s, 4s
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                    }
                 }
-            } catch (bedrockError) {
-                console.error('Bedrock error, falling back:', bedrockError.message);
             }
+            console.warn('All Bedrock retries exhausted, using keyword fallback');
         }
 
         // Fallback: keyword-based intent detection

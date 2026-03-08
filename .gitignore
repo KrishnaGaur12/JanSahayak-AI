@@ -9,22 +9,54 @@ node_modules/
 # Build output
 frontend/dist/
 frontend/build/
+.dist/
 
-# IDE
+# IDE / Editor
 .vscode/
 .idea/
 *.swp
 *.swo
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
 # OS files
 .DS_Store
 Thumbs.db
 desktop.ini
+ehthumbs.db
 
 # Logs
 *.log
 npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
 # Temp files
 *.tmp
 .cache/
+tmp/
+
+# Package lock files (optional — uncomment if you don't want them tracked)
+# package-lock.json
+
+# Gemini / Antigravity AI artifacts
+.gemini/
+.agents/
+.agent/
+_agents/
+_agent/
+
+# Coverage & test output
+coverage/
+*.lcov
+.nyc_output/
+
+# Misc
+*.tsbuildinfo
+*.pid
+*.seed
+*.pid.lock
