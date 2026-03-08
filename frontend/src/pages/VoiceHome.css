@@ -9,15 +9,12 @@
     justify-content: center;
     min-height: calc(100vh - 56px);
     overflow: hidden;
-
-    /* Light warm background */
     background:
         radial-gradient(ellipse 60% 50% at 50% 35%, rgba(255, 107, 43, 0.04) 0%, transparent 70%),
         radial-gradient(ellipse 40% 40% at 60% 60%, rgba(255, 179, 71, 0.03) 0%, transparent 60%),
         linear-gradient(180deg, #fefefe 0%, #f7f5f2 100%);
 }
 
-/* ===== Background Effects ===== */
 .vh-bg-grain {
     position: absolute;
     inset: 0;
@@ -57,10 +54,196 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 32px;
+    gap: 24px;
     width: 100%;
     max-width: 560px;
     padding: 0 24px;
+}
+
+/* ===== Language Toggle ===== */
+.vh-lang-toggle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.vh-lang-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: #8888a0;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.vh-lang-buttons {
+    display: flex;
+    gap: 4px;
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 12px;
+    padding: 3px;
+}
+
+.vh-lang-btn {
+    padding: 8px 24px;
+    border-radius: 10px;
+    border: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: transparent;
+    color: #8888a0;
+}
+
+.vh-lang-btn:hover {
+    color: #4a4a6a;
+}
+
+.vh-lang-active {
+    background: white;
+    color: #ff6b2b;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.vh-lang-active:hover {
+    color: #ff6b2b;
+}
+
+/* ===== Choose View ===== */
+.vh-choose-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+    width: 100%;
+}
+
+.vh-welcome {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    letter-spacing: -0.02em;
+}
+
+.vh-welcome-sub {
+    font-size: 1rem;
+    color: #8888a0;
+    margin-bottom: 8px;
+}
+
+.vh-choose-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #b0b0c4;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* ===== Action Cards ===== */
+.vh-action-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    width: 100%;
+    max-width: 480px;
+}
+
+.vh-action-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 24px 20px;
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.vh-action-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #ff6b2b, #ffb347);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.vh-action-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.06);
+    border-color: rgba(255, 107, 43, 0.15);
+}
+
+.vh-action-card:hover::before {
+    opacity: 1;
+}
+
+.vh-action-icon {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.vh-action-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    line-height: 1.3;
+}
+
+.vh-action-desc {
+    font-size: 0.8125rem;
+    color: #8888a0;
+    line-height: 1.4;
+}
+
+.vh-action-arrow {
+    font-size: 1.125rem;
+    color: #ff6b2b;
+    font-weight: 600;
+    margin-top: auto;
+    transition: transform 0.2s;
+}
+
+.vh-action-card:hover .vh-action-arrow {
+    transform: translateX(4px);
+}
+
+/* ===== Back Link ===== */
+.vh-back-link {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #8888a0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.vh-back-link:hover {
+    color: #ff6b2b;
+    background: rgba(255, 107, 43, 0.04);
+}
+
+/* ===== Voice Query View ===== */
+.vh-voice-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    width: 100%;
 }
 
 /* ===== Header ===== */
@@ -96,7 +279,6 @@
     position: relative;
 }
 
-/* Subtle ring behind the orb */
 .vh-orb-section::before {
     content: '';
     position: absolute;
@@ -142,8 +324,6 @@
     background: rgba(0, 0, 0, 0.02);
     border: 1px solid rgba(0, 0, 0, 0.06);
     border-radius: 16px;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
 }
 
 .transcript-status {
@@ -205,11 +385,25 @@
 /* ===== Responsive ===== */
 @media (max-height: 700px) {
     .vh-content {
-        gap: 20px;
+        gap: 16px;
     }
 
     .vh-title {
         font-size: 1.375rem;
+    }
+
+    .vh-welcome {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .vh-action-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .vh-welcome {
+        font-size: 1.5rem;
     }
 }
 
@@ -219,6 +413,6 @@
     }
 
     .vh-content {
-        gap: 40px;
+        gap: 32px;
     }
 }

@@ -48,8 +48,19 @@ export default function App() {
     setStatusData(null);
   }, []);
 
+  const goToLanding = useCallback(() => {
+    setCurrentPage('landing');
+    setSchemeData(null);
+    setComplaintData(null);
+    setStatusData(null);
+  }, []);
+
   const toggleLanguage = useCallback(() => {
     setLanguage(prev => prev === 'hi' ? 'en' : 'hi');
+  }, []);
+
+  const setLang = useCallback((lang) => {
+    setLanguage(lang);
   }, []);
 
   // Landing page — full-screen, no header
@@ -62,7 +73,7 @@ export default function App() {
     <>
       <Header
         language={language}
-        onLogoClick={goHome}
+        onLogoClick={goToLanding}
         onLanguageToggle={toggleLanguage}
         onHelpClick={() => setShowHelp(true)}
       />
@@ -71,11 +82,13 @@ export default function App() {
         {currentPage === 'home' && (
           <VoiceHome
             language={language}
+            onSetLanguage={setLang}
             chatHistory={chatHistory}
             onSchemeResult={handleSchemeResult}
             onComplaintResult={handleComplaintResult}
             onStatusLookup={handleStatusLookup}
             onAddMessage={(msg) => setChatHistory(prev => [...prev, msg])}
+            onGoToLanding={goToLanding}
           />
         )}
         {currentPage === 'scheme' && (
